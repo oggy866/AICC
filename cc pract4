@@ -1,0 +1,44 @@
+Make sure you followed these steps:
+1.	Go to File > New > Apex Class
+2.	Name it exactly: LoginController
+3.	Paste this clean version:
+apex
+CopyEdit
+public class LoginController {
+    public String username { get; set; }
+    public String password { get; set; }
+    public String message { get; set; }
+
+    public PageReference login() {
+        if (username == 'admin' && password == '1234') {
+            message = 'Login successful';
+        } else {
+            message = 'Invalid login';
+        }
+        return null;
+    }
+}
+✅ Make sure there are no smart quotes (‘’) or (“”) — only plain ' and ". ✅ Don’t change the class or variable names.
+Then click File > Save.
+________________________________________
+🔹 Visualforce Page: LoginPage
+1.	Go to File > New > Visualforce Page
+2.	Name it: LoginPage
+3.	Paste this corrected page code:
+html
+<apex:page controller="LoginController">
+    <apex:form>
+        <apex:pageBlock title="Custom Login Form">
+            <apex:pageBlockSection columns="2">
+                <apex:inputText label="Username" value="{!username}" />
+                <apex:inputSecret label="Password" value="{!password}" />
+            </apex:pageBlockSection>
+            <apex:commandButton value="Login" action="{!login}" />
+            <apex:outputText value="{!message}" style="color:red; font-weight:bold;" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+Then click File > Save
+Now in browerser-
+Open url-https://orgfarm-d4ae31f7b5-dev-ed.develop.my.salesforce.com/apex/LoginPage
+Output- 
